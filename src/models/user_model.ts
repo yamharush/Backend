@@ -1,18 +1,21 @@
 import mongoose from 'mongoose'
 
 const userSchema = new mongoose.Schema({
-    email:{
+    email: {
         type: String,
         required: true
     },
     password: {
         type: String,
         required: true
+    }, name: {
+        type: String,
+        required: true
     },
-    refresh_tokens:{
+    refresh_tokens: {
         type: [String]
     }
 })
 
-export = mongoose.model('User',userSchema)
+export = mongoose.model('User', userSchema)
 

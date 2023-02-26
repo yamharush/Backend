@@ -71,7 +71,7 @@ import auth from '../controllers/auth.js'
  *                 description: The error description 
  *  
  */
-router.post('/register',auth.register)
+router.post('/register', auth.register)
 
 
 /**
@@ -103,7 +103,7 @@ router.post('/register',auth.register)
  *               refresh_token: '123456...'
  *
  */
-router.post('/login',auth.login)
+router.post('/login', auth.login)
 
 
 /**
@@ -131,7 +131,7 @@ router.post('/login',auth.login)
  *               refresh_token: '123456...'
  *
  */
-router.get('/refresh',auth.refresh)
+router.get('/refresh', auth.refresh)
 
 
 /**
@@ -147,8 +147,59 @@ router.get('/refresh',auth.refresh)
  *         description: logout sucess, refresh token is invalidated
  *
  */
-router.get('/logout',auth.logout)
+router.get('/logout', auth.logout)
+/**
+ * @swagger
+ * /auth/logout:
+ *   get:
+ *     summary: Logout the user and invalidate the refresh token
+ *     tags: [Auth]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Logout successful, refresh token is invalidated
+ */
 
+router.get('/', auth.getUserInfo)
+/* @swagger
+* /auth:
+*   get:
+*     summary: Get the current user's information
+*     tags: [Auth]
+*     security:
+*       - bearerAuth: []
+*     responses:
+*       200:
+*         description: Current user's information
+*/
+
+router.put('/', auth.updateUser)
+/**   put:
+ *     summary: Update the current user's information
+ *     tags: [Auth]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       description: User information to update
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: User information updated successfully
+ *       400:
+ *         description: Invalid user information
+ */
 export = router
 
 
