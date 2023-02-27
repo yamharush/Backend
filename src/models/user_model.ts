@@ -5,10 +5,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    password: {
+    name: {
         type: String,
         required: true
-    }, name: {
+    },
+    image: {
+        type: String,
+        required: true
+    },
+    password: {
         type: String,
         required: true
     },
@@ -18,4 +23,3 @@ const userSchema = new mongoose.Schema({
 })
 
 export = mongoose.model('User', userSchema)
-
